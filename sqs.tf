@@ -151,6 +151,29 @@ resource "aws_sqs_queue" "notification_dlq" {
   }
 }
 
+resource "aws_sqs_queue_policy" "notification_policy" {
+  queue_url = aws_sqs_queue.notification.id
+
+  policy = data.aws_iam_policy_document.notification_policy_document.json
+}
+
+data "aws_iam_policy_document" "notification_policy_document" {
+  statement {
+    actions   = ["sqs:SendMessage"]
+    resources = ["${aws_sqs_queue.notification.arn}"]
+    effect    = "Allow"
+    principals {
+      type        = "AWS"
+      identifiers = ["*"]
+    }
+    condition {
+      test     = "ForAnyValue:ArnEquals"
+      variable = "aws:SourceArn"
+      values   = ["${aws_sns_topic.dataset_notification.arn}"]
+    }
+  }
+}
+
 # staging-notifier
 resource "aws_sqs_queue" "staging_notifier" {
   name = "${var.environment_name}-staging-notifier"

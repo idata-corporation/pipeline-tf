@@ -61,4 +61,3 @@ resource "aws_s3_bucket" "staging" {
     Name = var.environment_name
   }
 }
-

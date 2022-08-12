@@ -29,7 +29,7 @@ data "aws_iam_policy_document" "dataset_notification_policy" {
       variable = "AWS:SourceOwner"
 
       values = [
-        "${var.aws_account_id}",
+        "${data.aws_caller_identity.current.account_id}",
       ]
     }
 
@@ -52,6 +52,7 @@ resource "aws_sns_topic_subscription" "notification" {
   topic_arn = aws_sns_topic.dataset_notification.arn
   protocol  = "sqs"
   endpoint  = aws_sqs_queue.notification.arn
+  raw_message_delivery = true
   delivery_policy = jsonencode({
     healthyRetryPolicy = {
         numRetries = 3
