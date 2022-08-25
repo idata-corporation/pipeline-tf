@@ -1,3 +1,19 @@
+resource "aws_dynamodb_table" "config" {
+  name          = "${var.environment_name}-config"
+  billing_mode  = "PAY_PER_REQUEST"
+  hash_key      = "name"
+  table_class   = "STANDARD"
+
+  attribute {
+      name = "name"
+      type = "S"
+  }
+
+  tags = {
+    Name = var.environment_name
+  }
+}
+
 resource "aws_dynamodb_table" "dataset" {
   name          = "${var.environment_name}-dataset"
   billing_mode  = "PAY_PER_REQUEST"
