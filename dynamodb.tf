@@ -15,14 +15,14 @@ resource "aws_dynamodb_table" "config" {
 }
 
 resource "aws_dynamodb_table" "dataset" {
-  name          = "${var.environment_name}-dataset"
-  billing_mode  = "PAY_PER_REQUEST"
-  hash_key      = "name"
-  table_class   = "STANDARD"
+  name         = "${var.environment_name}-dataset"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "name"
+  table_class  = "STANDARD"
 
   attribute {
-      name = "name"
-      type = "S"
+    name = "name"
+    type = "S"
   }
 
   tags = {
@@ -31,14 +31,14 @@ resource "aws_dynamodb_table" "dataset" {
 }
 
 resource "aws_dynamodb_table" "trigger" {
-  name          = "${var.environment_name}-trigger"
-  billing_mode  = "PAY_PER_REQUEST"
-  hash_key      = "name"
-  table_class   = "STANDARD"
+  name         = "${var.environment_name}-trigger"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "name"
+  table_class  = "STANDARD"
 
   attribute {
-      name = "name"
-      type = "S"
+    name = "name"
+    type = "S"
   }
 
   tags = {
@@ -47,14 +47,14 @@ resource "aws_dynamodb_table" "trigger" {
 }
 
 resource "aws_dynamodb_table" "archived-data" {
-  name          = "${var.environment_name}-archived-data"
-  billing_mode  = "PAY_PER_REQUEST"
-  hash_key      = "pipeline_token"
-  table_class   = "STANDARD"
+  name         = "${var.environment_name}-archived-data"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "pipeline_token"
+  table_class  = "STANDARD"
 
   attribute {
-      name = "pipeline_token"
-      type = "S"
+    name = "pipeline_token"
+    type = "S"
   }
 
   tags = {
@@ -63,14 +63,14 @@ resource "aws_dynamodb_table" "archived-data" {
 }
 
 resource "aws_dynamodb_table" "archived-metadata" {
-  name          = "${var.environment_name}-archived-metadata"
-  billing_mode  = "PAY_PER_REQUEST"
-  hash_key      = "pipeline_token"
-  table_class   = "STANDARD"
+  name         = "${var.environment_name}-archived-metadata"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "pipeline_token"
+  table_class  = "STANDARD"
 
   attribute {
-      name = "pipeline_token"
-      type = "S"
+    name = "pipeline_token"
+    type = "S"
   }
 
   tags = {
@@ -79,20 +79,20 @@ resource "aws_dynamodb_table" "archived-metadata" {
 }
 
 resource "aws_dynamodb_table" "dataset-status-summary" {
-  name          = "${var.environment_name}-dataset-status-summary"
-  billing_mode  = "PAY_PER_REQUEST"
-  hash_key      = "pipeline_token"
-  range_key     = "created_at"
-  table_class   = "STANDARD"
+  name         = "${var.environment_name}-dataset-status-summary"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "pipeline_token"
+  range_key    = "created_at"
+  table_class  = "STANDARD"
 
   attribute {
-      name = "pipeline_token"
-      type = "S"
+    name = "pipeline_token"
+    type = "S"
   }
 
   attribute {
-      name = "created_at"
-      type = "N"
+    name = "created_at"
+    type = "N"
   }
 
   tags = {
@@ -101,20 +101,20 @@ resource "aws_dynamodb_table" "dataset-status-summary" {
 }
 
 resource "aws_dynamodb_table" "dataset-status" {
-  name          = "${var.environment_name}-dataset-status"
-  billing_mode  = "PAY_PER_REQUEST"
-  hash_key      = "pipeline_token"
-  range_key     = "created_at"
-  table_class   = "STANDARD"
+  name         = "${var.environment_name}-dataset-status"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "pipeline_token"
+  range_key    = "created_at"
+  table_class  = "STANDARD"
 
   attribute {
-      name = "pipeline_token"
-      type = "S"
+    name = "pipeline_token"
+    type = "S"
   }
 
   attribute {
-      name = "created_at"
-      type = "N"
+    name = "created_at"
+    type = "N"
   }
 
   tags = {
@@ -123,20 +123,20 @@ resource "aws_dynamodb_table" "dataset-status" {
 }
 
 resource "aws_dynamodb_table" "trigger-status-summary" {
-  name          = "${var.environment_name}-trigger-status-summary"
-  billing_mode  = "PAY_PER_REQUEST"
-  hash_key      = "trigger_token"
-  range_key     = "created_at"
-  table_class   = "STANDARD"
+  name         = "${var.environment_name}-trigger-status-summary"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "trigger_token"
+  range_key    = "created_at"
+  table_class  = "STANDARD"
 
   attribute {
-      name = "trigger_token"
-      type = "S"
+    name = "trigger_token"
+    type = "S"
   }
 
   attribute {
-      name = "created_at"
-      type = "N"
+    name = "created_at"
+    type = "N"
   }
 
   tags = {
@@ -145,20 +145,20 @@ resource "aws_dynamodb_table" "trigger-status-summary" {
 }
 
 resource "aws_dynamodb_table" "trigger-status" {
-  name          = "${var.environment_name}-trigger-status"
-  billing_mode  = "PAY_PER_REQUEST"
-  hash_key      = "trigger_token"
-  range_key     = "created_at"
-  table_class   = "STANDARD"
+  name         = "${var.environment_name}-trigger-status"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "trigger_token"
+  range_key    = "created_at"
+  table_class  = "STANDARD"
 
   attribute {
-      name = "trigger_token"
-      type = "S"
+    name = "trigger_token"
+    type = "S"
   }
 
   attribute {
-      name = "created_at"
-      type = "N"
+    name = "created_at"
+    type = "N"
   }
 
   tags = {
