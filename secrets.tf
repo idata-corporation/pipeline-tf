@@ -1,5 +1,5 @@
 resource "aws_secretsmanager_secret" "apikeys" {
-  name = "${var.environment_name}-apikeys"
+  name = "${var.apikeys_name}"
 }
 
 resource "aws_secretsmanager_secret_version" "apikeys" {
