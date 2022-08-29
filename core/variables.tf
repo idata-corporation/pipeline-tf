@@ -1,7 +1,7 @@
 variable "environment_name" {
   description = "Environment name for your Pipeline (e.g. mycompany-poc)"
   type        = string
-  default     = "mycompany-poc"
+  default     = "idata-poc"
 }
 
 variable "apikeys_name" {
