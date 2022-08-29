@@ -159,7 +159,7 @@ module "eks_managed_node_group" {
     max_unavailable_percentage = 50 # or set `max_unavailable`
   }
 
-  iam_role_additional_policies = [aws_iam_policy.node_additional.arn]
+  # iam_role_additional_policies = [aws_iam_policy.node_additional.arn]
 
   tags = merge(local.tags, { Separate = "eks-managed-node-group" })
 }
