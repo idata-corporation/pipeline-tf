@@ -146,8 +146,8 @@ module "eks_managed_node_group" {
   max_size     = 3
   desired_size = 1
 
-  instance_types = ["m6i.2xlarge"]
-  capacity_type  = "SPOT"
+  instance_types = ["m5.2xlarge"]
+  capacity_type  = "ON_DEMAND"
 
   labels = {
     Environment = "poc"
@@ -200,12 +200,13 @@ module "fargate_profile" {
 # 1. Create the dependent resources before the cluster => `terraform apply -target <your policy or your security group> and then `terraform apply`
 #   Note: this is the route users will have to take for adding additonal security groups to nodes since there isn't a separate "security group attachment" resource
 # 2. For addtional IAM policies, users can attach the policies outside of the cluster definition as demonstrated below
-# resource "aws_iam_role_policy_attachment" "additional" {
-#   for_each = module.eks.eks_managed_node_groups
+resource "aws_iam_role_policy_attachment" "additional" {
 
-#   policy_arn = aws_iam_policy.node_additional.arn
-#   role       = each.value.iam_role_name
-# }
+   for_each = module.eks.eks_managed_node_groups
+
+   policy_arn = aws_iam_policy.node_additional.arn
+   role       = each.value.iam_role_name
+ }
 
 
 ################################################################################
